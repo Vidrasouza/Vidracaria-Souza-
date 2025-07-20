@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidraçaria Souza - Soluções em Vidro e Alumínio</title>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0d47a1">
+
+  <style>
+    /* Todo o CSS permanece inalterado, exceto para .image-modal */
+    :root {
+      --primary: #0d47a1;
+      --secondary: #1976d2;
+      --accent: #e53935;
+      --light: #e3f2fd;
+      --dark: #0c3c78;
+      --text: #333;
+      --white: #ffffff;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0c3c78, #1a237e);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+    
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+    
+    .card {
+      background: var(--white);
+      margin: auto;
+      max-width: 500px;
+      padding: 30px 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+    }
+    
+    .logo {
+      font-size: 40px;
+      background: var(--primary);
+      color: white;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: rotate(15deg);
+    }
+    
+    h1 {
+      color: var(--primary);
+      margin-bottom: 5px;
+      font-size: 1.8rem;
+    }
+    
+    h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-top: 0;
+      font-weight: 500;
+    }
+    
+    .info-box {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      text-align: left;
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .info-box:hover {
+      transform: translateY(-3px);
+    }
+    
+    .info-box div {
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    .info-box div::before {
+      content: '•';
+      margin-right: 8px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .descricao {
+      font-size: 1rem;
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+    
+    .btn {
+      display: block;
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 14px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    .btn:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(50, 50);
+        opacity: 0;
+      }
+    }
+    
+    .btn-red {
+      background-color: var(--accent);
+    }
+    
+    .btn-blue {
+      background-color: var(--secondary);
+    }
+    
+    .btn-green {
+      background-color: var(--success);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
+    }
+    
+    .btn:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .redes {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .redes a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--light);
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .redes a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    input {
+      padding: 12px 15px;
+      font-size: 1rem;
+      width: 90%;
+      max-width: 300px;
+      margin: 12px auto;
+      display: block;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+      transition: border 0.3s;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    }
+    
+    .error {
+      color: var(--error);
+      font-size: 0.9rem;
+      margin-top: 5px;
+      text-align: center;
+      display: none;
+    }
+    
+    .status {
+      color: var(--success);
+      font-size: 0.9rem;
+      margin-top: 5px;
+      text-align: center;
+      display: none;
+    }
+    
+    footer {
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 20px 0;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 500px;
+      line-height: 1.6;
+      width: 100%;
+    }
+    
+    /* Estilos para as diferentes "páginas" dentro do mesmo HTML */
+    .page-section {
+        width: 100%;
+        max-width: 1000px;
+        background: var(--white);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        margin: auto;
+        display: none;
+        flex-grow: 1;
+    }
+
+    .page-section.visible {
+        display: block;
+    }
+
+    /* Estilos específicos para o CONTEÚDO DO EDITOR */
+    #editorContent {
+        text-align: left;
+    }
+
+    #editorContent h1 {
+        color: var(--primary);
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #editorContent label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    #editorContent input[type="text"],
+    #editorContent input[type="url"],
+    #editorContent textarea {
+        width: 100%;
+        max-width: none;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    #editorContent textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    #editorContent .editor-group {
+        background-color: var(--light);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 5px solid var(--secondary);
+    }
+
+    #editorContent .editor-group h3 {
+        color: var(--secondary);
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 5px;
+    }
+
+    #editorContent .editor-btn-group {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+
+    #editorContent .editor-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    #editorContent .editor-btn-save {
+        background-color: var(--success);
+        color: white;
+    }
+
+    #editorContent .editor-btn-save:hover {
+        background-color: #43a047;
+    }
+
+    #editorContent .editor-btn-cancel {
+        background-color: var(--accent);
+        color: white;
+    }
+
+    #editorContent .editor-btn-cancel:hover {
+        background-color: #d32f2f;
+    }
+
+    #jsonOutput {
+        width: 100%;
+        min-height: 200px;
+        background-color: #f0f0f0;
+        border: 1px dashed #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        word-break: break-all;
+        margin-top: 15px;
+        overflow: auto;
+        font-size: 0.9em;
+        display: none;
+    }
+
+    #copyJsonBtn {
+        margin-top: 10px;
+        background-color: var(--primary);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        display: none;
+    }
+
+    #copyJsonBtn:hover {
+        background-color: var(--dark);
+    }
+
+    .service-item-editor {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background-color: var(--white);
+        position: relative;
+    }
+
+    .remove-service-btn {
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.8rem;
+    }
+    .remove-service-btn:hover {
+        background-color: #d32f2f;
+    }
+
+
+    /* Estilos para a página de dados (o gabarito do site completo) */
+    .data-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--light);
+    }
+    
+    .data-header h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .data-header h2 {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      color: var(--primary);
+      border-bottom: 2px solid var(--light);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+    
+    .contact-info-full {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .contact-card-full {
+      background: var(--light);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .contact-card-full h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .services-grid-full {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .service-card-full {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+      background: white;
+    }
+    
+    .service-card-full:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-image-full {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-weight: bold;
+      /* Novo: Ajuste para cobrir e não cortar */
+      object-fit: cover; 
+      width: 100%;
+      position: relative; /* Adicionado para posicionar o texto */
+    }
+
+    /* Estilo para o texto "Sem Imagem" */
+    .service-image-full.placeholder-text::after {
+        content: attr(data-placeholder-text); /* Usa o atributo para o texto */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f5f5f5;
+        color: #666;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    
+    .service-content-full {
+      padding: 20px;
+    }
+    
+    .service-content-full h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .service-content-full p {
+      margin-bottom: 15px;
+      color: #555;
+    }
+    
+    .service-btn-full {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .service-btn-full:hover {
+      background: var(--primary);
+    }
+    
+    .back-btn {
+      display: block;
+      width: 200px;
+      margin: 30px auto 0;
+      padding: 12px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .back-btn:hover {
+      background: #c62828;
+      transform: translateY(-3px);
+    }
+    
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .connection-status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 0.9rem;
+    }
+    
+    .online {
+      color: #66bb6a;
+    }
+    
+    .offline {
+      color: #ef5350;
+    }
+    
+    .debug-section {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      font-family: monospace;
+      max-height: 300px;
+      overflow: auto;
+      text-align: left;
+      border: 1px solid #eee;
+    }
+    
+    .json-viewer {
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    
+    .debug-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .debug-title {
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .debug-toggle {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .debug-toggle:hover {
+      background: var(--primary);
+    }
+    
+    .progress-bar {
+      height: 6px;
+      background-color: #e0e0e0;
+      border-radius: 3px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background-color: var(--success);
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    /* Estilos para a imagem "Sobre Nós" na página principal */
+    #aboutImageMainPage {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* NOVOS ESTILOS PARA O BOTÃO DE ENGRENAGEM */
+    .gear-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230d47a1"><path d="M12 2c-2.48 0-4.5 2.02-4.5 4.5S9.52 11 12 11s4.5-2.02 4.5-4.5S14.48 2 12 2zm0 13c-4.42 0-8 3.58-8 8h16c0-4.42-3.58-8-8-8z"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.29-.23.37-.66.19-1.05l-2-3.46c-.18-.31-.56-.4-.9-.23l-2.49 1.01c-.53-.41-1.09-.75-1.68-.97l-.35-2.6A.995.995 0 0 0 12 2h-4c-.53 0-1.01.36-1.16.86l-.35 2.6c-.59.22-1.15.56-1.68.97l-2.49-1.01c-.34-.17-.72-.08-.9.23l-2 3.46c-.18.39-.1.82.19 1.05l2.11 1.65c-.04.32-.07.64-.07-.98s.03.66.07-.98l-2.11 1.65c-.29.23-.37.66-.19.105l2 3.46c.18.31.56.4.9.23l2.49-1.01c.53.41 1.09.75 1.68.97l.35 2.6c.15.5.63.86 1.16.86h4c.53 0 1.01-.36 1.16-.86l.35-2.6c.59-.22 1.15-.56 1.68-.97l2.49-1.01c.34.17.72.08-.19-.23l2-3.46c.18-.39.1-.82-.19-1.05l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>');
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease;
+      z-index: 10;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+    }
+    
+    .gear-button:hover {
+      transform: rotate(30deg) scale(1.1);
+    }
+    
+    /* Estilos para o botão "Ir para o Site Oficial" */
+    #btnConectar {
+        background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        font-size: 1.2rem;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 8px 15px rgba(76, 175, 80, 0.4);
+        animation: pulse 1.5s infinite;
+    }
+
+    #btnConectar:hover {
+        background: linear-gradient(90deg, #43A047, #7CB342);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(76, 175, 80, 0.6);
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 8px 15px rgba(76, 175, 80, 0.4); }
+        50% { transform: scale(1.02); box-shadow: 0 10px 20px rgba(76, 175, 80, 0.6); }
+        100% { transform: scale(1); box-shadow: 0 8px 15px rgba(76, 175, 80, 0.4); }
+    }
+
+    /* Novos estilos para os botões de contato na página secundária */
+    .site-contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    .site-contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .site-contact-button.whatsapp {
+      background-color: #25D366;
+    }
+    .site-contact-button.whatsapp:hover {
+      background-color: #1DA851;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .site-contact-button.email {
+      background-color: #D44638;
+    }
+    .site-contact-button.email:hover {
+      background-color: #C1392B;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .card {
+        margin: 20px 15px;
+        padding: 25px 15px;
+      }
+      
+      .page-section {
+        margin: 20px 15px; 
+        padding: 25px 15px;
+      }
+
+      .data-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .gear-button {
+        top: 15px;
+        right: 15px;
+        width: 25px;
+        height: 25px;
+      }
+
+      .site-contact-buttons {
+          flex-direction: column;
+          gap: 10px;
+      }
+
+      .site-contact-button {
+          width: 90%;
+          max-width: 250px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .btn {
+        padding: 12px;
+        font-size: 0.95rem;
+      }
+      
+      .info-box {
+        font-size: 0.9rem;
+      }
+      
+      .debug-section {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Estilos para o campo de parte variável */
+    .variable-path-container {
+      background-color: #f0f5ff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .variable-path-container label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .variable-path-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #b8c4d9;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-align: center;
+      padding-right: 40px;
+    }
+    
+    .variable-path-input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    }
+    
+    .path-status {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 5px;
+    }
+    
+    .path-status.success {
+      background-color: rgba(76, 175, 80, 0.1);
+      color: #2e7d32;
+      border: 1px solid #4caf50;
+    }
+    
+    .path-status.error {
+      background-color: rgba(244, 67, 54, 0.1);
+      color: #c62828;
+      border: 1px solid #f44336;
+    }
+    
+    .path-status.warning {
+      background-color: rgba(255, 152, 0, 0.1);
+      color: #ef6c00;
+      border: 1px solid #ff9800;
+    }
+    
+    /* Botão X para limpar campo */
+    .clear-variable-btn {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #999;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .clear-variable-btn:hover {
+      color: var(--accent);
+    }
+
+    /* --- Modal de Imagem --- */
+    .image-modal {
+        display: none; /* CORRIGIDO: Oculto por padrão */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        /* Flexbox para centralizar o conteúdo vertical e horizontalmente */
+        /* display: flex; REMOVIDO DAQUI - Será adicionado via JS apenas ao abrir */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-modal-content {
+        /* margin: auto; */ /* Removido, pois o flexbox faz o trabalho */
+        display: block;
+        max-width: 90%; /* Ajusta para uma porcentagem maior da tela */
+        max-height: 90vh; /* Limita a altura para não sair da tela */
+        object-fit: contain; /* Garante que a imagem caiba sem cortar, mantendo proporções */
+        border-radius: 8px; /* Opcional: Adiciona bordas arredondadas à imagem no modal */
+        box-shadow: 0 0 20px rgba(0,0,0,0.7); /* Opcional: Sombra para destacar a imagem */
+    }
+
+    /* Opcional: estilo para a legenda se você adicionar uma */
+    #caption {
+        margin-top: 15px;
+        color: #f1f1f1;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .image-modal-close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer; /* Adicionado */
+    }
+
+    .image-modal-close:hover,
+    .image-modal-close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)} 
+        to {transform:scale(1)}
+    }
+  
+.client-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.testimonial {
+  background: #f2f2f2;
+  padding: 15px 20px;
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  font-style: italic;
+  color: #222;
+}
+.testimonial span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.client-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.testimonial {
+  background: var(--light);
+  padding: 15px 20px;
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  font-style: italic;
+}
+.testimonial span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--dark);
+}
+.btn-attractive {
+  background: linear-gradient(135deg, #1da851, #25d366);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 10px;
+}
+.btn-attractive:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card page-section visible" id="paginaPrincipal">
+      <button id="adminGearButton" class="gear-button" aria-label="Configurações do Site"></button>
+      <div class="logo">🪞</div>
+      <h1 id="companyName">VIDRAÇARIA SOUZA</h1>
+      <h2 id="companySlogan">Especialistas em soluções de vidro e alumínio sob medida</h2>
+<p style="font-weight: bold; color: var(--success); margin-top: 10px;">
+  📲 Nos ajude a divulgar nosso cartão! Compartilhe com seus amigos. Desde já, agradecemos!
+</p>
+<button class="btn-attractive" onclick="compartilharCartao()">🔗 Compartilhar Cartão</button>
+<script>
+function compartilharCartao() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      text: 'Confira meu cartão digital da Vidraçaria Souza!',
+      url: location.href
+    });
+  } else {
+    alert('❗ Este dispositivo não permite compartilhamento automático. Você pode copiar o arquivo baixado pelo WhatsApp (normalmente na pasta "Download") e enviar manualmente.');
+  }
+}
+</script>
+
+
+      <img id="aboutImageMainPage" src="" alt="Sobre a Empresa"> 
+      
+      <div class="info-box">
+        <div>📞 <span id="phoneNumber">(15) 99700-4956</span></div>
+        <div>📍 <span id="streetAddress">Rua Eugênia de Oliveira Cirne, Nº 1180</span></div>
+        <div>🏙️ <span id="neighborhoodCityState">Jd. Marly - Sorocaba/SP</span></div>
+        <div>🕒 <span id="hoursWeek">Seg-Mac: 8h às 18h</span> | <span id="hoursSat">Sáb: 8h às 12h</span></div>
+      </div>
+
+      <p class="descricao" id="companyDescription">
+        Transformando espaços com elegância, segurança e transparência.
+      </p>
+
+      <button class="btn btn-red" id="btnConectar" onclick="conectar()">
+        IR PARA O SITE OFICIAL
+      </button>
+      
+      <button class="btn btn-blue" id="btnMostrarSenha" onclick="mostrarAtualizarLink()">🔄 Atualizar Link dos Serviços</button>
+      
+      <div class="progress-bar hidden" id="progressBar">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <div id="senhaContainer" class="hidden">
+        <input type="password" id="senha" placeholder="Digite a senha de acesso">
+        <div id="senhaError" class="error">Senha incorreta! Tente novamente.</div>
+        <button class="btn btn-blue" onclick="validarSenhaParaLink()">✅ Entrar</button>
+      </div>
+
+      <div id="jsonContainer" class="hidden">
+        <div class="variable-path-container">
+          <label for="jsonPath">Parte Variável do Link:</label>
+          <input type="text" id="jsonPath" class="variable-path-input" 
+                 placeholder="Cole a parte variável do link (ex: 493d5b3f3ac9b3faff20284839aaabd2/raw/...)" 
+                 value="10de6abd00eaa0d9d24e87e39b4c1870/raw/gistfile1.txt">
+          <button class="clear-variable-btn" id="clearVariablePath" title="Limpar campo">✕</button>
+          <div id="pathStatus" class="path-status hidden"></div>
+        </div>
+        <div id="linkError" class="error"></div>
+        <button class="btn btn-blue" onclick="testarLink()">🧪 Testar Link</button>
+        <button class="btn btn-green" onclick="salvarLink()">💾 Salvar Link</button>
+      </div>
+
+      <div class="redes">
+        <a id="facebookLink" href="#" title="Facebook" target="_blank"><i>📘</i></a>
+        <a id="instagramLink" href="#" title="Instagram" target="_blank"><i>📸</i></a>
+        <a id="whatsappLink" href="#" title="WhatsApp" target="_blank"><i>📱</i></a>
+        <a id="youtubeLink" href="#" title="YouTube" target="_blank"><i>▶️</i></a>
+      </div>
+      
+      <div class="connection-status" id="connectionStatus">
+        <span id="statusIcon">●</span> <span id="statusText">Verificando conexão...</span>
+      </div>
+    </div>
+
+    <div id="paginaHtml" class="page-section">
+      </div>
+
+    <div id="adminPage" class="page-section">
+        <div id="adminPasswordPrompt" class="password-modal">
+            <div class="modal-content">
+                <h2>Acesso Administrador</h2>
+                <input type="password" id="adminPassword" placeholder="Digite a senha de acesso">
+                <button id="submitAdminPassword">Entrar</button>
+                <p id="adminPasswordError" class="error">Senha incorreta! Tente novamente.</p>
+            </div>
+        </div>
+
+        <div id="editorContent" style="display: none;">
+            <h1>Editor de Conteúdo</h1>
+            <p>Preencha os campos abaixo para gerar o seu código JSON. Você precisará copiar este JSON e hospedá-lo em um serviço como <a href="https://gist.github.com/" target="_blank">GitHub Gist</a> ou <a href="https://pastebin.com/" target="_blank">Pastebin</a> para obter um link RAW.</p>
+            
+            <div class="editor-group">
+                <h3>Informações da Empresa</h3>
+                <label for="editorCompanyNamePart1">Nome da Empresa (Parte 1):</label>
+                <input type="text" id="editorCompanyNamePart1" placeholder="Ex: AMARIK">
+
+                <label for="editorCompanyNamePart2">Nome da Empresa (Parte 2):</label>
+                <input type="text" id="editorCompanyNamePart2" placeholder="Ex: CARTÃO DIGITAL">
+
+                <label for="editorCompanySlogan">Slogan da Empresa:</label>
+                <input type="text" id="editorCompanySlogan" placeholder="Ex: Soluções em Cartões Digitais">
+            </div>
+
+            <div class="editor-group">
+                <h3>Contato e Endereço</h3>
+                <label for="editorPhoneNumber">Telefone:</label>
+                <input type="text" id="editorPhoneNumber" placeholder="(XX) XXXXX-XXXX">
+                
+                <label for="editorWhatsapp">WhatsApp (apenas números, com DDI e DDD, ex: 5515997004956):</label>
+                <input type="text" id="editorWhatsapp" placeholder="Ex: 5515997004956">
+
+                <label for="editorEmail">Email:</label>
+                <input type="text" id="editorEmail" placeholder="contato@empresa.com">
+
+                <label for="editorAddressStreet">Endereço (Rua):</label>
+                <input type="text" id="editorAddressStreet" placeholder="Rua Exemplo">
+
+                <label for="editorAddressNumber">Número:</label>
+                <input type="text" id="editorAddressNumber" placeholder="123">
+
+                <label for="editorAddressNeighborhood">Bairro:</label>
+                <input type="text" id="editorAddressNeighborhood" placeholder="Jardim Centro">
+
+                <label for="editorAddressCity">Cidade:</label>
+                <input type="text" id="editorAddressCity" placeholder="Sorocaba">
+
+                <label for="editorAddressState">Estado (UF):</label>
+                <input type="text" id="editorAddressState" placeholder="SP">
+
+                <label for="editorMapIframeSrc">Link do Mapa (Iframe src):</label>
+                <input type="url" id="editorMapIframeSrc" placeholder="Cole o URL do iframe do Google Maps aqui">
+                <p style="font-size: 0.8em; color: #666; margin-top: -5px; margin-bottom: 10px;">
+                  Para o mapa funcionar corretamente, obtenha o link de incorporação (iframe) diretamente do Google Maps. Pesquise o endereço no Google Maps, clique em "Compartilhar" -> "Incorporar um mapa" e copie o 'src' do iframe.
+                </p>
+            </div>
+
+            <div class="editor-group">
+                <h3>Horário de Funcionamento</h3>
+                <label for="editorHoursWeek">Segunda a Sexta:</label>
+                <input type="text" id="editorHoursWeek" placeholder="8h às 18h">
+
+                <label for="editorHoursSat">Sábado:</label>
+                <input type="text" id="editorHoursSat" placeholder="8h às 12h">
+            </div>
+
+            <div class="editor-group">
+                <h3>Descrição da Empresa (Página Principal)</h3>
+                <label for="editorCompanyDescription">Descrição Curta:</label>
+                <textarea id="editorCompanyDescription" placeholder="Especializada em serviços de..."></textarea>
+            </div>
+
+            <div class="editor-group">
+                <h3>Sobre Nós (Página Completa)</h3>
+                <label for="editorAboutParagraphs">Parágrafos sobre a empresa (um por linha):</label>
+                <textarea id="editorAboutParagraphs" placeholder="Parágrafo 1
+Parágrafo 2"></textarea>
+
+                <label for="editorAboutImageUrl">URL da Imagem "Sobre Nós":</label>
+                <input type="url" id="editorAboutImageUrl" placeholder="https://exemplo.com/imagem_sobre_nos.jpg">
+            </div>
+
+            <div class="editor-group">
+                <h3>Redes Sociais</h3>
+                <label for="editorFacebook">Facebook URL:</label>
+                <input type="url" id="editorFacebook" placeholder="https://facebook.com/seuusuario">
+
+                <label for="editorInstagram">Instagram URL:</label>
+                <input type="url" id="editorInstagram" placeholder="https://instagram.com/seuusuario">
+                
+                <label for="editorYoutube">YouTube URL:</label>
+                <input type="url" id="editorYoutube" placeholder="https://youtube.com/suavidracaria">
+            </div>
+
+            <div class="editor-group">
+                <h3>Serviços</h3>
+                <div id="servicesContainer">
+                    </div>
+                <button class="btn btn-blue" style="max-width: 200px; margin-top: 20px;" onclick="addServiceField()">+ Inserir Mais Produto</button>
+            </div>
+            
+            <div class="editor-group">
+                <h3>Rodapé</h3>
+                <label for="editorFooterCopyrightYear">Ano do Copyright no Rodapé:</label>
+                <input type="text" id="editorFooterCopyrightYear" placeholder="Ex: 2024">
+                
+                <label for="editorFooterSlogan">Slogan do Rodapé:</label>
+                <input type="text" id="editorFooterSlogan" placeholder="Ex: Soluções em Cartões Digitais">
+            </div>
+
+            <div class="editor-btn-group">
+                <button class="editor-btn editor-btn-cancel" onclick="voltar()">Cancelar e Voltar</button>
+                <button class="editor-btn editor-btn-save" onclick="gerarJsonEExibir()">Gerar JSON para Copiar</button>
+            </div>
+            <div id="editorStatus" class="status" style="margin-top: 10px;"></div>
+            <div id="editorError" class="error" style="margin-top: 10px;"></div>
+
+            <div id="jsonOutput" contenteditable="true"></div>
+            <button id="copyJsonBtn" onclick="copyJsonToClipboard()">Copiar JSON</button>
+            <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+              ☝️ Copie o texto acima e cole em um serviço como <a href="https://gist.github.com/" target="_blank">GitHub Gist</a> ou <a href="https://pastebin.com/" target="_blank">Pastebin</a>. Depois, copie o link RAW gerado por eles e use-o no campo "Cole o link RAW do arquivo JSON" na página principal.
+            </p>
+        </div>
+    </div>
+  </div>
+
+  <footer>
+    <span id="footerCompanyName">Vidraçaria Souza</span> © <span id="footerCopyrightYear">2024</span> - <span id="footerSlogan">Vidros e Alumínios com Qualidade e Segurança</span><br>
+    Desenvolvido com ❤️ para clientes exigentes
+  
+<div class="section">
+  <h2 class="section-title">O que dizem nossos clientes</h2>
+  <div class="client-testimonials">
+    <div class="testimonial">
+      <p>"Ótimo atendimento, recomendo demais! Serviço rápido e com qualidade."</p>
+      <span>— João Silva</span>
+    </div>
+    <div class="testimonial">
+      <p>"Fez o box do meu banheiro exatamente como pedi. Muito caprichoso."</p>
+      <span>— Carla Santos</span>
+    </div>
+  </div>
+</div>
+
+</footer>
+
+  <div id="imageModal" class="image-modal">
+    <span class="image-modal-close">×</span>
+    <img class="image-modal-content" id="modalImage">
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = "171226";
+    const LINK_PASSWORD = "12345";
+    const GIST_BASE_URL = "https://gist.githubusercontent.com/Vidrasouza/";
+    const DEFAULT_GIST_PATH = "10de6abd00eaa0d9d24e87e39b4c1870/raw/gistfile1.txt";
+    
+    let debugMode = false;
+    let currentData = null;
+    let serviceCounter = 0;
+
+    // Função para contornar problemas de CORS
+    async function fetchWithCorsProxy(url) {
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Pode ser necessário um proxy diferente ou nenhum dependendo do ambiente
+      try {
+        const directResponse = await fetch(url, { cache: "no-store" });
+        if (!directResponse.ok) {
+          throw new Error(`Erro HTTP direto: ${directResponse.status}`);
+        }
+        return await directResponse.json();
+      } catch (error) {
+        console.warn('Erro sem proxy. Tentando com proxy:', error);
+        const proxiedResponse = await fetch(proxyUrl + url, { cache: "no-store" });
+        if (!proxiedResponse.ok) {
+            throw new Error(`Erro HTTP com proxy: ${proxiedResponse.status}`);
+        }
+        return await proxiedResponse.json();
+      }
+    }
+
+    // Verificar conexão com a internet
+    async function checkConnection() {
+      const statusElement = document.getElementById('connectionStatus');
+      const statusIcon = document.getElementById('statusIcon');
+      const statusText = document.getElementById('statusText');
+      
+      try {
+        await fetch('https://www.google.com', { mode: 'no-cors', cache: 'no-store', signal: AbortSignal.timeout(3000) });
+        statusIcon.className = 'online';
+        statusText.textContent = 'Conectado à internet';
+        statusElement.style.display = 'block';
+        return true;
+      } catch (e) {
+        statusIcon.className = 'offline';
+        statusText.textContent = 'Sem conexão com a internet';
+        statusElement.style.display = 'block';
+        return false;
+      }
+    }
+
+    // Função para preencher o "cartão" com dados do JSON
+    function preencherCard(data) {
+        currentData = data;
+        document.getElementById('companyName').textContent = `${data.company.namePart1 || ''} ${data.company.namePart2 || ''}`;
+        document.getElementById('companySlogan').textContent = data.company.slogan || '';
+        document.getElementById('phoneNumber').textContent = data.contact.phone || '';
+        document.getElementById('streetAddress').textContent = `${data.contact.address.street || ''}, ${data.contact.address.number || ''}`;
+        document.getElementById('neighborhoodCityState').textContent = `${data.contact.address.neighborhood || ''} - ${data.contact.address.city || ''}/${data.contact.address.state || ''}`;
+        
+        const hours = data.contact.hours || {};
+        document.getElementById('hoursWeek').textContent = `Seg-Sex: ${hours.monday_friday || ''}`;
+        document.getElementById('hoursSat').textContent = `Sáb: ${hours.saturday || ''}`;
+        
+        document.getElementById('companyDescription').textContent = data.description || '';
+        document.getElementById('facebookLink').href = data.social_media.facebook || '#';
+        document.getElementById('instagramLink').href = data.social_media.instagram || '#';
+        
+        // WhatsApp Link para o botão principal usando wa.me
+        const whatsappNum = data.social_media.whatsapp || '';
+        const cleanWhatsapp = whatsappNum.replace(/\D/g, '');
+        document.getElementById('whatsappLink').href = cleanWhatsapp ? `https://wa.me/${cleanWhatsapp}` : '#';
+        
+        document.getElementById('youtubeLink').href = data.social_media.youtube || '#';
+        document.getElementById('footerCompanyName').textContent = `${data.company.namePart1 || ''} ${data.company.namePart2 || ''}`;
+        document.getElementById('footerCopyrightYear').textContent = data.footer.copyrightYear || '';
+        document.getElementById('footerSlogan').textContent = data.footer.slogan || '';
+
+        const aboutImageMainPage = document.getElementById('aboutImageMainPage');
+        if (data.about && data.about.imageUrl) {
+            aboutImageMainPage.src = data.about.imageUrl;
+            aboutImageMainPage.style.display = 'block';
+        } else {
+            aboutImageMainPage.src = '';
+            aboutImageMainPage.style.display = 'none';
+        }
+    }
+
+    // Função para mostrar a página HTML completa
+    function mostrarPaginaHtmlCompleta(data) {
+        hideAllPages();
+        const container = document.getElementById("paginaHtml");
+        container.classList.add("visible");
+        currentData = data;
+
+        let firmName = `${data.company.namePart1 || ''} ${data.company.namePart2 || ''}`;
+
+        // WhatsApp Link para botões de serviço com mensagem pré-definida
+        const whatsappNum = data.contact.whatsapp || '';
+        const cleanWhatsapp = whatsappNum.replace(/\D/g, '');
+        const whatsappBaseApi = cleanWhatsapp ? `https://api.whatsapp.com/send?phone=${cleanWhatsapp}` : '#';
+        
+        let htmlConteudo = `
+            <div class="data-header">
+                <h1 id="siteFirmName">${firmName}</h1>
+                <h2>${data.company.slogan || ''}</h2>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Sobre Nós</h2>
+                ${(data.about && data.about.imageUrl) ? `
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="${data.about.imageUrl}" alt="Sobre a empresa" style="max-width:100%; height:auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    </div>
+                ` : ''}
+                <p>${(data.about && data.about.paragraphs) ? data.about.paragraphs.join('<br><br>') : 'Descrição sobre a empresa não disponível.'}</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="services-grid-full">
+                ${(data.services || []).map(service => `
+                    <div class="service-card-full">
+                        <img class="service-image-full" 
+                             src="${service.imageUrl || 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='}" 
+                             alt="${service.title || 'Serviço'}" 
+                             onclick="${service.imageUrl ? `openImageModal('${service.imageUrl}')` : `alert('Não há imagem disponível para este item.');`}"
+                             onerror="this.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; this.classList.add('placeholder-text'); this.setAttribute('data-placeholder-text', 'Sem Imagem');">
+                        <div class="service-content-full">
+                            <h3>${service.title || 'Serviço sem nome'}</h3>
+                            <p>${service.description || 'Descrição não disponível'}</p>
+                            <a href="${whatsappBaseApi}&text=${encodeURIComponent(service.whatsappText || '')}" class="service-btn-full" target="_blank">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                `).join('')}
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Contato Completo</h2>
+                <div class="contact-info-full">
+                    <div class="contact-card-full">
+                        <h3>Endereço</h3>
+                        <p>${data.contact.address.street || ''}, ${data.contact.address.number || ''}</p>
+                        <p>${data.contact.address.neighborhood || ''}, ${data.contact.address.city || ''} - ${data.contact.address.state || ''}</p>
+                        ${(data.contact.mapIframeSrc) ? `
+                          <div style="margin-top:15px; height:200px; background:#eee; border-radius:8px;">
+                            
+<iframe src="https://www.google.com/maps?q=Rua%20Eug%C3%AAn width="100%" height="100%" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                          </div>
+                        ` : ''}
+                    </div>
+                    <div class="contact-card-full">
+                        <h3>Contatos</h3>
+                        <p>📞 Telefone: ${data.contact.phone || ''}</p>
+                        <p>📱 WhatsApp: <a href="${whatsappBaseApi}">${data.contact.whatsapp || ''}</a></p>
+                        <p>✉️ Email: <a href="mailto:${data.contact.email || ''}">${data.contact.email || ''}</a></p>
+                        
+                        <h3 style="margin-top:20px;">Horário de Funcionamento</h3>
+                        <p>Segunda a Sexta: ${data.contact.hours.monday_friday || ''}</p>
+                        <p>Sábado: ${data.contact.hours.saturday || ''}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-contact-buttons">
+                <a href="${whatsappBaseApi}&text=${encodeURIComponent('Olá, gostaria de falar com a ' + firmName + '.')}" target="_blank" class="site-contact-button whatsapp">
+                    WhatsApp
+                </a>
+                <a href="mailto:${data.contact.email || ''}" class="site-contact-button email">
+                    E-mail
+                </a>
+            </div>
+
+            <div class="debug-section" id="debugInfo"></div>
+            <button class="back-btn" onclick="voltar()">🔙 Voltar</button>
+        `;
+        container.innerHTML = htmlConteudo;
+
+        const debugHeader = document.createElement('div');
+        debugHeader.className = 'debug-header';
+        debugHeader.innerHTML = `<span class="debug-title">Informações Técnicas</span>`;
+        
+        const debugInfoElement = container.querySelector('#debugInfo');
+        if (debugInfoElement) {
+            debugInfoElement.prepend(debugHeader);
+        }
+        
+        if (debugMode) {
+          mostrarJSON(data);
+        }
+    }
+
+    // Função para abrir o modal da imagem
+    function openImageModal(imageUrl) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        
+        // Verifica se a URL da imagem é válida antes de tentar abrir
+        if (imageUrl && imageUrl !== 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=') {
+            modal.style.display = "flex"; // CORRIGIDO: Ativa o display flex SOMENTE ao abrir
+            modalImg.src = imageUrl;
+            // Opcional: Adicionar uma legenda se houver uma no JSON do serviço
+            // const captionText = document.getElementById("caption");
+            // captionText.innerHTML = "Legenda da imagem"; 
+        } else {
+            alert('Não há imagem disponível para este item.');
+            modal.style.display = "none"; // CORRIGIDO: Garante que o modal esteja fechado se a URL for inválida
+        }
+    }
+
+    // Função para fechar o modal da imagem
+    document.querySelector(".image-modal-close").onclick = function() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    async function conectar() {
+      const btnConectar = document.getElementById('btnConectar');
+      const originalText = btnConectar.innerHTML;
+      const progressBar = document.getElementById('progressBar');
+      const progress = document.getElementById('progress');
+      
+      progressBar.classList.remove('hidden');
+      progress.style.width = '0%';
+      
+      const isOnline = await checkConnection();
+      if (!isOnline) {
+        alert('📡 Sem conexão com a internet. Verifique sua rede.');
+        const salvo = localStorage.getItem("dadosJson");
+        if (salvo) {
+          try {
+            const jsonSalvo = JSON.parse(salvo);
+            alert("📁 Sem internet. Carregando dados salvos.");
+            preencherCard(jsonSalvo);
+            mostrarPaginaHtmlCompleta(jsonSalvo);
+          } catch (parseError) {
+            console.error("Erro ao analisar JSON salvo:", parseError);
+            alert("❌ Erro ao carregar dados salvos. Eles podem estar corrompidos.");
+          }
+        }
+        progressBar.classList.add('hidden');
+        return;
+      }
+      
+      btnConectar.innerHTML = '<span class="loading"></span> Conectando...';
+      btnConectar.disabled = true;
+      
+      progress.style.width = '30%';
+      
+      const variablePath = localStorage.getItem("savedGistPath"); 
+      let urlToFetch = GIST_BASE_URL + variablePath; 
+      
+      try {
+        progress.style.width = '50%';
+        const json = await fetchWithCorsProxy(urlToFetch); 
+        
+        progress.style.width = '80%';
+        localStorage.setItem("savedGistPath", variablePath); 
+        localStorage.setItem("dadosJson", JSON.stringify(json));
+        preencherCard(json);
+        mostrarPaginaHtmlCompleta(json);
+        
+        progress.style.width = '100%';
+        setTimeout(() => {
+          progressBar.classList.add('hidden');
+        }, 500);
+      } catch (e) {
+        console.error("Erro ao carregar JSON:", e);
+        progressBar.classList.add('hidden');
+        const salvo = localStorage.getItem("dadosJson");
+        if (salvo) {
+          try {
+            const jsonSalvo = JSON.parse(salvo);
+            alert("📁 Problema no link. Carregando versão salva.");
+            preencherCard(jsonSalvo);
+            mostrarPaginaHtmlCompleta(jsonSalvo);
+          } catch (parseError) {
+            console.error("Erro ao analisar JSON salvo:", parseError);
+            alert("❌ Erro ao carregar dados salvos. Eles podem estar corrompidos.");
+          }
+        } else {
+          alert(`❌ Erro ao carregar dados do serviço. Verifique o link ou sua conexão: ${e.message}`);
+        }
+      } finally {
+        btnConectar.innerHTML = originalText;
+        btnConectar.disabled = false;
+      }
+    }
+
+    // Lógica para o botão "Atualizar Link dos Serviços"
+    function mostrarAtualizarLink() {
+      document.getElementById("senhaContainer").classList.remove("hidden");
+      document.getElementById("jsonContainer").classList.add("hidden");
+      document.getElementById("senhaError").style.display = "none";
+    }
+
+    function validarSenhaParaLink() {
+      const senha = document.getElementById("senha").value;
+      const errorElement = document.getElementById("senhaError");
+      
+      if (senha === LINK_PASSWORD) { 
+        document.getElementById("senhaContainer").classList.add("hidden");
+        document.getElementById("jsonContainer").classList.remove("hidden");
+        errorElement.style.display = "none";
+      } else {
+        errorElement.textContent = 'Senha incorreta! Tente novamente.';
+        errorElement.style.display = "block";
+        document.getElementById("senha").style.animation = "shake 0.5s";
+        setTimeout(() => {
+          document.getElementById("senha").style.animation = "";
+        }, 500);
+      }
+    }
+    
+    // Lógica para o botão de engrenagem (Admin)
+    document.getElementById('adminGearButton').addEventListener('click', () => {
+        hideAllPages();
+        document.getElementById('adminPage').classList.add('visible');
+        document.getElementById('adminPasswordPrompt').style.display = 'flex'; 
+        document.getElementById('editorContent').style.display = 'none'; 
+        document.getElementById('adminPassword').value = ''; 
+        document.getElementById('adminPasswordError').style.display = 'none'; 
+        
+        document.getElementById('jsonOutput').style.display = 'none';
+        document.getElementById('copyJsonBtn').style.display = 'none';
+    });
+
+    document.getElementById('submitAdminPassword').addEventListener('click', () => {
+        const passwordInput = document.getElementById('adminPassword');
+        const errorElement = document.getElementById('adminPasswordError');
+
+        if (passwordInput.value === ADMIN_PASSWORD) {
+            document.getElementById('adminPasswordPrompt').style.display = 'none';
+            document.getElementById('editorContent').style.display = 'block';
+            preencherCamposEditor(currentData); 
+        } else {
+            errorElement.textContent = 'Senha incorreta. Tente novamente.';
+            errorElement.style.display = 'block';
+            passwordInput.style.animation = "shake 0.5s";
+            setTimeout(() => {
+                passwordInput.style.animation = "";
+            }, 500);
+        }
+    });
+
+    // Permite submeter com Enter no campo da senha do admin
+    document.getElementById('adminPassword').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            document.getElementById('submitAdminPassword').click();
+        }
+    });
+
+
+    function addServiceField(service = {}) {
+        const servicesContainer = document.getElementById('servicesContainer');
+        const newServiceId = `service-${serviceCounter++}`;
+
+        const serviceHtml = `
+            <div class="service-item-editor" id="${newServiceId}">
+                <button type="button" class="remove-service-btn" onclick="removeServiceField('${newServiceId}')">Remover</button>
+                <label for="${newServiceId}-title">Título do Serviço:</label>
+                <input type="text" id="${newServiceId}-title" placeholder="Ex: Cartão Digital Premium" value="${service.title || ''}">
+
+                <label for="${newServiceId}-description">Descrição do Serviço:</label>
+                <textarea id="${newServiceId}-description" placeholder="Descrição detalhada do serviço...">${service.description || ''}</textarea>
+
+                <label for="${newServiceId}-imageUrl">URL da Imagem do Serviço:</label>
+                <input type="url" id="${newServiceId}-imageUrl" placeholder="https://exemplo.com/cartao_premium.jpg" value="${service.imageUrl || ''}">
+
+                <label for="${newServiceId}-whatsappText">Texto WhatsApp para Orçamento:</label>
+                <textarea id="${newServiceId}-whatsappText" placeholder="Olá, gostaria de um orçamento para Cartão Digital Premium.">${service.whatsappText || ''}</textarea>
+            </div>
+        `;
+        servicesContainer.insertAdjacentHTML('beforeend', serviceHtml);
+    }
+
+    function removeServiceField(id) {
+        const elementToRemove = document.getElementById(id);
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
+    }
+
+    function preencherCamposEditor(data) {
+        if (!data) {
+             data = {
+                company: {}, contact: {address:{}, hours:{}}, description: '', 
+                about: {paragraphs:[], imageUrl: ''}, social_media: {}, services: [], footer: {}
+            };
+        }
+
+        document.getElementById('editorCompanyNamePart1').value = data.company.namePart1 || '';
+        document.getElementById('editorCompanyNamePart2').value = data.company.namePart2 || '';
+        document.getElementById('editorCompanySlogan').value = data.company.slogan || '';
+        document.getElementById('editorPhoneNumber').value = data.contact.phone || '';
+        document.getElementById('editorWhatsapp').value = data.contact.whatsapp || '';
+        document.getElementById('editorEmail').value = data.contact.email || '';
+        document.getElementById('editorAddressStreet').value = data.contact.address.street || '';
+        document.getElementById('editorAddressNumber').value = data.contact.address.number || '';
+        document.getElementById('editorAddressNeighborhood').value = data.contact.address.neighborhood || '';
+        document.getElementById('editorAddressCity').value = data.contact.address.city || '';
+        document.getElementById('editorAddressState').value = data.contact.address.state || '';
+        document.getElementById('editorMapIframeSrc').value = data.contact.mapIframeSrc || '';
+        
+        const hours = data.contact.hours || {};
+        document.getElementById('editorHoursWeek').value = hours.monday_friday || '';
+        document.getElementById('editorHoursSat').value = hours.saturday || '';
+        
+        document.getElementById('editorCompanyDescription').value = data.description || '';
+        document.getElementById('editorAboutParagraphs').value = (data.about && data.about.paragraphs) ? data.about.paragraphs.join('\n') : '';
+        document.getElementById('editorAboutImageUrl').value = (data.about && data.about.imageUrl) || '';
+        document.getElementById('editorFacebook').value = data.social_media.facebook || '';
+        document.getElementById('editorInstagram').value = data.social_media.instagram || '';
+        document.getElementById('editorYoutube').value = data.social_media.youtube || '';
+        document.getElementById('editorFooterCopyrightYear').value = data.footer.copyrightYear || '';
+        document.getElementById('editorFooterSlogan').value = data.footer.slogan || '';
+
+        document.getElementById('servicesContainer').innerHTML = '';
+        serviceCounter = 0;
+
+        const servicesToLoad = (data.services && data.services.length > 0) ? data.services : Array(5).fill({});
+        servicesToLoad.forEach(service => addServiceField(service));
+    }
+
+    function gerarJsonEExibir() {
+        const editorStatus = document.getElementById('editorStatus');
+        const editorError = document.getElementById('editorError');
+        const jsonOutput = document.getElementById('jsonOutput');
+        const copyJsonBtn = document.getElementById('copyJsonBtn');
+
+        editorStatus.style.display = 'none';
+        editorError.style.display = 'none';
+
+        try {
+            const collectedServices = [];
+            document.querySelectorAll('.service-item-editor').forEach(serviceDiv => {
+                const idPrefix = serviceDiv.id;
+                collectedServices.push({
+                    title: document.getElementById(`${idPrefix}-title`).value,
+                    description: document.getElementById(`${idPrefix}-description`).value,
+                    imageUrl: document.getElementById(`${idPrefix}-imageUrl`).value,
+                    whatsappText: document.getElementById(`${idPrefix}-whatsappText`).value
+                });
+            });
+
+            const generatedData = {
+                company: {
+                    namePart1: document.getElementById('editorCompanyNamePart1').value,
+                    namePart2: document.getElementById('editorCompanyNamePart2').value,
+                    slogan: document.getElementById('editorCompanySlogan').value
+                },
+                contact: {
+                    phone: document.getElementById('editorPhoneNumber').value,
+                    whatsapp: document.getElementById('editorWhatsapp').value,
+                    email: document.getElementById('editorEmail').value,
+                    address: {
+                        street: document.getElementById('editorAddressStreet').value,
+                        number: document.getElementById('editorAddressNumber').value,
+                        neighborhood: document.getElementById('editorAddressNeighborhood').value,
+                        city: document.getElementById('editorAddressCity').value,
+                        state: document.getElementById('editorAddressState').value
+                    },
+                    hours: {
+                        monday_friday: document.getElementById('editorHoursWeek').value,
+                        saturday: document.getElementById('editorHoursSat').value
+                    },
+                    mapIframeSrc: document.getElementById('editorMapIframeSrc').value
+                },
+                description: document.getElementById('editorCompanyDescription').value,
+                about: {
+                    paragraphs: document.getElementById('editorAboutParagraphs').value.split('\n').filter(p => p.trim() !== ''),
+                    imageUrl: document.getElementById('editorAboutImageUrl').value
+                },
+                social_media: {
+                    facebook: document.getElementById('editorFacebook').value,
+                    instagram: document.getElementById('editorInstagram').value,
+                    whatsapp: document.getElementById('editorWhatsapp').value,
+                    youtube: document.getElementById('editorYoutube').value
+                },
+                services: collectedServices, 
+                footer: {
+                    copyrightYear: document.getElementById('editorFooterCopyrightYear').value,
+                    slogan: document.getElementById('editorFooterSlogan').value
+                }
+            };
+
+            const jsonString = JSON.stringify(generatedData, null, 2);
+            jsonOutput.textContent = jsonString;
+            jsonOutput.style.display = 'block'; 
+            copyJsonBtn.style.display = 'block'; 
+
+            editorStatus.textContent = "✅ JSON gerado! Copie e hospede-o.";
+            editorStatus.style.display = 'block';
+            editorStatus.style.color = 'var(--success)';
+            
+            currentData = generatedData;
+            localStorage.setItem("dadosJson", jsonString);
+            preencherCard(currentData); 
+            alert("Alterações salvas e atualizadas na página principal! Copie o JSON para uso externo.");
+
+        } catch (e) {
+            editorError.textContent = `❌ Erro ao gerar JSON: ${e.message}`;
+            editorError.style.display = 'block';
+            editorError.style.color = 'var(--error)';
+            console.error("Erro ao gerar JSON:", e);
+            jsonOutput.style.display = 'none'; 
+            copyJsonBtn.style.display = 'none'; 
+        }
+    }
+
+    function copyJsonToClipboard() {
+        const jsonOutput = document.getElementById('jsonOutput');
+        navigator.clipboard.writeText(jsonOutput.textContent)
+            .then(() => {
+                alert("✅ JSON copiado para a área de transferência!");
+            })
+            .catch(err => {
+                console.error('Erro ao copiar JSON: ', err);
+                alert("❌ Erro ao copiar JSON. Tente selecionar e copiar manualmente.");
+            });
+    }
+
+    async function testarLink() {
+      const variablePath = document.getElementById("jsonPath").value.trim(); 
+      const errorElement = document.getElementById("linkError");
+      const statusElement = document.getElementById("pathStatus");
+      
+      if (!variablePath) {
+        errorElement.textContent = "❗ Por favor, cole a parte variável do link";
+        errorElement.style.display = "block";
+        statusElement.style.display = "none";
+        return;
+      }
+      
+      const fullUrl = GIST_BASE_URL + variablePath;
+      
+      errorElement.style.display = "none";
+      statusElement.textContent = "Testando link...";
+      statusElement.className = "path-status warning";
+      statusElement.style.display = "block";
+      
+      try {
+        const response = await fetchWithCorsProxy(fullUrl); 
+        
+        statusElement.textContent = "✅ Link válido bem formatado!";
+        statusElement.className = "path-status success";
+        
+      } catch (e) {
+        statusElement.textContent = `❌ Erro: ${e.message}`;
+        statusElement.className = "path-status error";
+      }
+    }
+
+    function salvarLink() {
+      const variablePath = document.getElementById("jsonPath").value.trim();
+      const errorElement = document.getElementById("linkError");
+      const statusElement = document.getElementById("pathStatus"); 
+      
+      if (!variablePath) {
+        errorElement.textContent = "❗ Por favor, cole a parte variável do link";
+        errorElement.style.display = "block";
+        statusElement.style.display = "none"; 
+        return;
+      }
+      
+      try {
+        localStorage.setItem("savedGistPath", variablePath); 
+        
+        alert("✅ Parte variável salva com sucesso! Clique em 'IR PARA O SITE OFICIAL' para carregar os dados.");
+        document.getElementById("jsonContainer").classList.add("hidden");
+        errorElement.style.display = "none";
+        document.getElementById("senhaContainer").classList.add("hidden"); 
+
+        statusElement.innerHTML = `✅ Parte variável carregada:<br><span style="word-break: break-all; font-weight: bold; color: var(--primary);">${variablePath}</span>`;
+        statusElement.className = "path-status success";
+        statusElement.style.display = "block";
+
+      } catch (e) {
+        errorElement.textContent = `❗ Erro ao salvar parte variável: ${e.message}`;
+        errorElement.style.display = "block";
+        statusElement.style.display = "none";
+      }
+    }
+    
+    function mostrarJSON(json) {
+      const debugInfo = document.getElementById('debugInfo');
+      if (!debugInfo) return;
+      
+      const jsonViewer = document.createElement('pre');
+      jsonViewer.className = 'json-viewer';
+      jsonViewer.textContent = JSON.stringify(json, null, 2);
+      
+      debugInfo.appendChild(jsonViewer);
+    }
+    
+    function toggleDebugMode() {
+      debugMode = !debugMode;
+      const debugInfo = document.getElementById('debugInfo');
+      if (!debugInfo) return;
+      
+      const jsonViewer = debugInfo.querySelector('.json-viewer');
+      if (jsonViewer) jsonViewer.remove();
+      
+      if (debugMode) {
+        const dataToDisplay = currentData || JSON.parse(localStorage.getItem("dadosJson"));
+        if (dataToDisplay) {
+          try {
+            mostrarJSON(dataToDisplay);
+          } catch (e) {
+            const errorMsg = document.createElement('div');
+            errorMsg.textContent = `❌ Erro ao analisar JSON: ${e.message}`;
+            errorMsg.style.color = 'var(--error)';
+            debugInfo.appendChild(errorMsg);
+          }
+        } else {
+            const errorMsg = document.createElement('div');
+            errorMsg.textContent = `⚠️ Nenhum JSON salvo para mostrar.`;
+            errorMsg.style.color = 'var(--warning)';
+            debugInfo.appendChild(errorMsg);
+        }
+      }
+      
+      const toggleBtn = debugInfo.querySelector('.debug-toggle');
+      if (toggleBtn) {
+        toggleBtn.textContent = debugMode ? 'Ocultar JSON' : 'Mostrar JSON';
+      }
+    }
+    
+    function mostrarDebugInfo(url, error, json = null) {
+      hideAllPages();
+      const container = document.getElementById("paginaHtml");
+      container.classList.add("visible");
+      
+      let debugContent = `
+        <div class="data-header">
+          <h1>Informações de Depuração</h1>
+          <h2>Problema ao processar o JSON</h2>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">Detalhes do Erro</h2>
+          <div class="contact-card-full">
+            <p><strong>URL utilizada:</strong> ${url || 'Nenhuma'}</p>
+            <p><strong>Mensagem de erro:</strong> ${error ? error.message : 'Nenhum erro específico'}</p>
+            <p><strong>Hora do erro:</strong> ${new Date().toLocaleString()}</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">JSON Recebido/Salvo</h2>
+          <div class="debug-section" id="jsonPreview"></div>
+        </div>
+        
+        <button class="back-btn" onclick="voltar()">🔙 Voltar</button>
+      `;
+      
+      container.innerHTML = debugContent;
+      
+      const jsonPreview = document.getElementById('jsonPreview');
+      if (json) {
+        const pre = document.createElement('pre');
+        pre.className = 'json-viewer';
+        pre.textContent = JSON.stringify(json, null, 2);
+        jsonPreview.appendChild(pre);
+      } else if (localStorage.getItem("dadosJson")) {
+          const pre = document.createElement('pre');
+          pre.className = 'json-viewer';
+          pre.textContent = JSON.stringify(JSON.parse(localStorage.getItem("dadosJson")), null, 2);
+          jsonPreview.appendChild(pre);
+          const msg = document.createElement('p');
+          msg.textContent = 'Este é o JSON salvo localmente. O JSON da URL pode ter falhado.';
+          msg.style.marginTop = '10px';
+          msg.style.fontStyle = 'italic';
+          msg.style.color = '#555';
+          jsonPreview.appendChild(msg);
+      }
+      else {
+        jsonPreview.textContent = 'Nenhum JSON disponível para exibição ou salvo.';
+      }
+    }
+
+    function hideAllPages() {
+        const pages = document.querySelectorAll('.page-section');
+        pages.forEach(page => page.classList.remove("visible"));
+    }
+
+    function voltar() {
+      hideAllPages();
+      document.getElementById("paginaPrincipal").classList.add("visible");
+      document.getElementById("senhaContainer").classList.add("hidden");
+      document.getElementById("jsonContainer").classList.add("hidden");
+      
+      document.getElementById('jsonOutput').style.display = 'none';
+      document.getElementById('copyJsonBtn').style.display = 'none';
+    }
+
+    window.onload = async () => {
+      // Inicializa o caminho do gist com o valor padrão se não existir
+      if (!localStorage.getItem("savedGistPath")) {
+        localStorage.setItem("savedGistPath", DEFAULT_GIST_PATH);
+      }
+      
+      // Preenche o campo de caminho com o valor salvo
+      const savedPath = localStorage.getItem("savedGistPath");
+      document.getElementById("jsonPath").value = savedPath;
+      
+      // Mostra status do caminho salvo
+      const statusElement = document.getElementById("pathStatus");
+      statusElement.innerHTML = `✅ Parte variável carregada:<br><span style="word-break: break-all; font-weight: bold; color: var(--primary);">${savedPath}</span>`;
+      statusElement.className = "path-status success";
+      statusElement.style.display = "block";
+      
+      // Adiciona evento para o botão "X" de limpar campo
+      document.getElementById('clearVariablePath').addEventListener('click', () => {
+        document.getElementById('jsonPath').value = '';
+      });
+      
+      // Verifica conexão
+      await checkConnection();
+      
+      // Carrega dados iniciais imediatamente
+      const dadosSalvos = localStorage.getItem("dadosJson");
+      if (dadosSalvos) {
+        try {
+          const jsonSalvo = JSON.parse(dadosSalvos);
+          preencherCard(jsonSalvo);
+          currentData = jsonSalvo;
+        } catch (e) {
+          console.error("Erro ao analisar dados salvos:", e);
+        }
+      }
+      
+      // Mostra página principal
+      document.getElementById("paginaPrincipal").classList.add("visible");
+      
+      // Atualiza após 2 segundos
+      setTimeout(async () => {
+        const statusText = document.getElementById('statusText');
+        statusText.textContent = "Atualizando dados...";
+        
+        try {
+          const variablePath = localStorage.getItem("savedGistPath") || DEFAULT_GIST_PATH;
+          const urlToFetch = GIST_BASE_URL + variablePath;
+          const jsonAtualizado = await fetchWithCorsProxy(urlToFetch);
+          
+          // Salva e atualiza se forem diferentes
+          const dadosAtuais = JSON.parse(localStorage.getItem("dadosJson") || "{}");
+          if (JSON.stringify(jsonAtualizado) !== JSON.stringify(dadosAtuais)) {
+            localStorage.setItem("dadosJson", JSON.stringify(jsonAtualizado));
+            preencherCard(jsonAtualizado);
+            currentData = jsonAtualizado;
+            statusText.textContent = "Dados atualizados com sucesso!";
+          } else {
+            statusText.textContent = "Dados já estão atualizados";
+          }
+        } catch (e) {
+          statusText.textContent = "Atualização falhou. Mantendo versão atual.";
+        }
+      }, 2000);
+    };
+    
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
